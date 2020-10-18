@@ -1,0 +1,91 @@
+TABELAS
+
+user - id, login, pass, type: (student|faculty member)
+
+skills - id, name, dsc
+
+student_skill_level - user_id, skill_id, level: enum(0,1,2,3,4)
+
+faculty_skills - user_id, skill_id
+
+houses - id, name
+
+students_in_houses - group_id, student_id
+
+question * - acho q ta fora do escopo do teste enviar a pergunta, mas easy
+
+* student_house poderia ser um campo do estudante, mas não tem nenhuma menção dizendo se é único ou se pode ter N grupos p/ mesmo estudante.
+
+
+
+
+
+-
+
+
+business rules
+student level 3 - 4 in skill
+same group > rest
+higher level first
+question go to a higher level student
+
+faculty members with tag for skill
+
+
+
+
+-
+fluxo:
+
+pg fazer pergunta
+
+(req) get listar assuntos / tópicos
+
+renderizar topicos
+
+selecionar tópico
+
+(req) get lista ordenada
+
+
+INICIO - algoritmo da lista:
+
+1 - queryAluno = `
+
+select 
+    sl.user_id 
+
+from skill_level sl 
+
+join student_seila_groups sg on sl.user_id == sg.user_id
+
+where
+    user_id != MEU_USER_ID
+    skill_id == MEU_SKILL_ID
+    skill_level > 3
+    skill_level > MEU_SKILL_LEVEL
+
+ORDER BY (
+    CASE WHEN sg.group_id = MEU_ID_GROUP THEN 1 ELSE 2 END,
+    sl.skill_level
+)
+`
+
+if (!empty queryAluno) return query
+
+
+2 - queryProfessor = `
+select 
+    fs.user_id
+
+from faculty_skills fs 
+
+where fs.skill_id == MEU_SKILL_ID 
+`
+
+return queryProfessor;
+
+FIM - algoritmo da lista:
+
+
+renderizar na tela a lista, gg
