@@ -28,3 +28,5 @@ const SERVER_PORT = process.env.SERVER_PORT;
 app.listen(SERVER_PORT, () =>
     console.info(`Sora server listening on port ${SERVER_PORT}`),
 );
+
+module.exports = app;

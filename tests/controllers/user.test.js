@@ -2,18 +2,8 @@
 
 const dbBuilder = require('../dbBuilder');
 
-const mockRequest = body => ({
-    body,
-});
-
-const mockResponse = () => {
-    const res = {};
-    res.status = jest.fn().mockReturnValue(res);
-    res.json = jest.fn().mockReturnValue(res);
-    return res;
-};
-
-const { login, create } = require('../../app/controllers/user');
+const request = require('supertest');
+const server = require('../../server');
 
 describe('user', () => {
 
@@ -23,86 +13,81 @@ describe('user', () => {
 
     describe('login', () => {
 
-        test('email is missing from body - should return 400', async () => {
-            const req = mockRequest(
-                { password: 'boss' },
-            );
-            const res = mockResponse();
-            await login(req, res);
-            expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({
-                error: 'Invalid payload',
-            });
+        test('email is missing from body - should return status 400', async () => {
+            const res = await request(server)
+                .post('/login')
+                .send({
+                    password: '123456',
+                });
+            expect(res.statusCode).toEqual(400);
+            expect(res.body.error).toEqual('Invalid payload');
         });
 
-        test('password is missing from body - should return 400', async () => {
-            const req = mockRequest(
-                { email: 'garret@hireMe.com' },
-            );
-            const res = mockResponse();
-            await login(req, res);
-            expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({
-                error: 'Invalid payload',
-            });
+        test('password is missing from body - should return status 400', async () => {
+            const res = await request(server)
+                .post('/login')
+                .send({
+                    email: 'garret@hireMe.com'
+                });
+            expect(res.statusCode).toEqual(400);
+            expect(res.body.error).toEqual('Invalid payload');
         });
 
-        test('invalid credentials, should return 400', async () => {
-            const req = mockRequest(
-                { email: 'tiago@hireMe.com', password: '123456' },
-            );
-            const res = mockResponse();
-            await login(req, res);
-            expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({
-                error: 'Invalid credentials',
-            });
+        test('invalid credentials, should return status 400', async () => {
+            const res = await request(server)
+                .post('/login')
+                .send({
+                    email: 'tiago@hireMe.com',
+                    password: '123456'
+                });
+            expect(res.statusCode).toEqual(400);
+            expect(res.body.error).toEqual('Invalid credentials');
         });
 
-        test('should 200 - if correct credentials and payload', async () => {
-            const req = mockRequest(
-                { email: 'tiago@soraschools.com', password: '123456' },
-            );
-            const res = mockResponse();
-            await login(req, res);
-            expect(res.status).toHaveBeenCalledWith(200);
+        test('valid credentials and payload, should return status 200 and token in body', async () => {
+            const res = await request(server)
+                .post('/login')
+                .send({
+                    email: 'tiago@soraschools.com',
+                    password: '123456'
+                });
+            expect(res.statusCode).toEqual(200);
+            expect(res.body.token).toBeTruthy();
         });
 
     });
 
-    describe('create', () => {
+    describe('register', () => {
 
-        test('email is missing from body - should return 400', async () => {
-            const req = mockRequest(
-                { password: 'boss' },
-            );
-            const res = mockResponse();
-            await create(req, res);
-            expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({
-                error: 'Invalid payload',
-            });
+        test('email is missing from body - should return status 400', async () => {
+            const res = await request(server)
+                .post('/register')
+                .send({
+                    password: 'boss',
+                });
+            expect(res.statusCode).toEqual(400);
+            expect(res.body.error).toEqual('Invalid payload');
         });
 
-        test('password is missing from body - should return 400', async () => {
-            const req = mockRequest(
-                { email: 'garret@hireMe.com' },
-            );
-            const res = mockResponse();
-            await create(req, res);
-            expect(res.status).toHaveBeenCalledWith(400);
-            expect(res.json).toHaveBeenCalledWith({
-                error: 'Invalid payload',
-            });
+        test('password is missing from body - should return status 400', async () => {
+            const res = await request(server)
+                .post('/register')
+                .send({
+                    email: 'boss@bla.com',
+                });
+            expect(res.statusCode).toEqual(400);
+            expect(res.body.error).toEqual('Invalid payload');
         });
 
         test('valid payload, should create', async () => {
-            const req = mockRequest(
-                { email: 'tiago@hireMe.com', password: '123456' },
-            );
-            const res = mockResponse();
-            await create(req, res);
-            expect(res.status).toHaveBeenCalledWith(201);
+            const res = await request(server)
+                .post('/register')
+                .send({
+                    email: 'tiago@hireMe.com',
+                    password: '123456',
+                });
+            expect(res.statusCode).toEqual(201);
+            expect(res.body.token).toBeTruthy();
         });
 
     });
