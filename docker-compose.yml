@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  sora:
+    container_name: sora
+    command: npm run dev
+    restart: always
+    environment:
+      - PGHOST=postgres
+      - SECRET=XF2PCH9-TMPM4NM-7VM2ASK
+      - PGUSER=postgres
+      - PGPASSWORD=Postgres2019!
+      - PGDATABASE=sora
+      - PGPORT=5432
+      - SERVER_PORT=8000
+      - NODE_PATH=/home/ahgora/Desktop/sora/be/node_modules:/home/ahgora/Desktop/sora/be/
+    build:
+      context: /home/ahgora/Desktop/sora/be/
+      args:
+        project_home: /home/ahgora/Desktop/sora/be/
+        production_flag:
+    volumes:
+      - /home/ahgora/Desktop/sora/be/:/home/ahgora/Desktop/sora/be/:rw
+      - /home/ahgora/Desktop/sora/be/node_modules # hack to exclude node_modules from mapping
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+      - "9229:9229"
+    networks:
+      - app-connect
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "Postgres2019!"
+    ports:
+      - "15432:5432"
+    volumes:
+      - ~/sora/PostgreSQL:/var/lib/postgresql/data
+    networks:
+      - app-connect
+
+networks:
+  app-connect:
+    driver: bridge
