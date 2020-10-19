@@ -2,14 +2,20 @@
 
 const { Pool } = require('pg');
 
-const pool = new Pool({
-    ssl: {
+const connectionData = {
+    connectionString: `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`,
+};
+
+if (process.env.PGSSL) {
+    connectionData.ssl = {
         rejectUnauthorized: false,
-    },
-});
+    };
+}
+
+const pool = new Pool(connectionData);
 
 pool.on('connect', () => {
-    console.log('Connected to db');
+    console.log(`Connected to db ${process.env.PGHOST}:${process.env.PORT}/${process.env.PGDATABASE}`);
 });
 
 module.exports = {
