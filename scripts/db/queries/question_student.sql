@@ -9,7 +9,7 @@ FROM
 	student_skill_level ssl 
 
 LEFT JOIN 
-	students_in_houses sih on ssl.user_id = sih.user_id
+	student_house sh on ssl.user_id = sh.user_id
 	
 JOIN myconstants mc on true
 
@@ -19,7 +19,7 @@ WHERE
     AND ssl.skill_level > mc.MY_SKILL_LEVEL
 
 ORDER BY (
-    CASE WHEN sih.house_id = mc.MY_HOUSE_ID THEN 2 ELSE 1 END,
+    CASE WHEN sh.house_id = mc.MY_HOUSE_ID THEN 2 ELSE 1 END,
     ssl.skill_level
 ) 
 DESC

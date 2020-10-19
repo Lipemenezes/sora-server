@@ -9,18 +9,19 @@ EXCEPTION
 END $$;
 
 CREATE TABLE IF NOT EXISTS users (
-	id serial PRIMARY KEY,
-	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+    id serial PRIMARY KEY,
+    email VARCHAR ( 255 ) UNIQUE NOT NULL,
+    password VARCHAR ( 100 ) NOT NULL,
     type user_roles NOT NULL,
-	password VARCHAR ( 100 ) NOT NULL,
-	created_on TIMESTAMP NOT NULL,
+    name VARCHAR ( 150 ),
+    created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP 
 );
 
 CREATE TABLE IF NOT EXISTS skills (
-	id serial PRIMARY KEY,
-	name VARCHAR ( 70 ) UNIQUE NOT NULL,
-	description VARCHAR ( 255 ) NULL
+    id serial PRIMARY KEY,
+    name VARCHAR ( 70 ) UNIQUE NOT NULL,
+    description VARCHAR ( 255 ) NULL
 );
 
 CREATE TABLE IF NOT EXISTS student_skill_level (
@@ -45,16 +46,16 @@ CREATE TABLE IF NOT EXISTS faculty_member_skills (
 );
 
 CREATE TABLE IF NOT EXISTS houses (
-	id serial PRIMARY KEY,
-	name VARCHAR ( 70 ) UNIQUE NOT NULL
+    id serial PRIMARY KEY,
+    name VARCHAR ( 70 ) UNIQUE NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS students_in_houses (
-  user_id INT NOT NULL,
-  house_id INT NOT NULL,
-  PRIMARY KEY (user_id, house_id),
-  FOREIGN KEY (house_id)
-      REFERENCES houses (id),
-  FOREIGN KEY (user_id)
-      REFERENCES users (id)
+CREATE TABLE IF NOT EXISTS student_house (
+    user_id INT NOT NULL,
+    house_id INT NOT NULL,
+    PRIMARY KEY (user_id),
+    FOREIGN KEY (user_id)
+        REFERENCES users (id),
+    FOREIGN KEY (house_id)
+        REFERENCES houses (id)
 );

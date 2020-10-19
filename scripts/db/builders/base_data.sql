@@ -57,8 +57,8 @@ VALUES(2, 'Product Crew');
 
 
 -- students in houses
-INSERT INTO students_in_houses (user_id, house_id)
+INSERT INTO student_house (user_id, house_id)
 VALUES(1, 1);
 
-INSERT INTO students_in_houses (user_id, house_id)
+INSERT INTO student_house (user_id, house_id)
 VALUES(2, 1);
