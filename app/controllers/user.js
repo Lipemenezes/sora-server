@@ -21,7 +21,7 @@ module.exports = {
     async create(req, res) {
 
         const validation = validatePayload(req.body);
-        if (!validation.isValid) return res.status(400).send({ error: validation.error });
+        if (!validation.isValid) return res.status(400).json({ error: validation.error });
 
         const hashedPassword = passwordHandler.hashPassword(req.body.password);
 
@@ -31,28 +31,29 @@ module.exports = {
             role: 'student',
         });
 
-        if (result.error) return res.status(400).send({ error: result.error });
+        if (result.error) return res.status(400).json({ error: result.error });
 
         const token = jwtHandler.generateToken(result.id);
 
-        return res.status(201).send({ token });
+        return res.status(201).json({ token });
     },
 
     async login(req, res) {
 
         const validation = validatePayload(req.body);
-        if (!validation.isValid) return res.status(400).send({ error: validation.error });
+        if (!validation.isValid) return res.status(400).json({ error: validation.error });
 
 
         const result = await userModel.getByEmail(req.body.email);
 
         if (!result.user || !passwordHandler.comparePassword(result.user.password, req.body.password)) {
-            return res.status(400).send({ error: 'Invalid credentials' });
+            return res.status(400).json({ error: 'Invalid credentials' });
         }
+
 
         const token = jwtHandler.generateToken(result.user.id);
 
-        return res.status(200).send({ token });
+        return res.status(200).json({ token });
     },
 
 };
