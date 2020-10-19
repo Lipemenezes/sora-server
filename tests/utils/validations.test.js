@@ -1,6 +1,6 @@
 'use strict';
 
-const validator = require('../../utils/validations');
+const validator = require('../../app/utils/validations');
 
 describe('validations -', () => {
 

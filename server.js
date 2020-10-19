@@ -5,9 +5,9 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const authMiddleware = require('./middlewares/auth');
+const authMiddleware = require('./app/middlewares/auth');
 
-const userController = require('./controllers/user');
+const userController = require('./app/controllers/user');
 
 require('dotenv-safe').config();
 
