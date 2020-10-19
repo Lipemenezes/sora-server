@@ -1,26 +1,26 @@
--- users
-INSERT INTO users (id, email, type, password, created_on)
-VALUES(1, 'lipe.menezes@live.com', 'student', '123456', NOW());
+-- users - default pass = 123456
+INSERT INTO users (email, first_name, last_name, role, password, created_on)
+VALUES('lipe.menezes@live.com', 'Felipe', 'Menezes', 'student', '$2b$10$iuzlSmlzwsl7XLI5PCUMdeRAL3k0UJYVVJHoowvyqQgOZyCMQorPi', NOW());
 
-INSERT INTO users (id, email, type, password, created_on)
-VALUES(2, 'garrett@soraschools.com', 'student', '123456', NOW());
+INSERT INTO users (email, first_name, last_name, role, password, created_on)
+VALUES('garrett@soraschools.com', 'Garret', 'Smiley', 'student', '$2b$10$iuzlSmlzwsl7XLI5PCUMdeRAL3k0UJYVVJHoowvyqQgOZyCMQorPi', NOW());
 
-INSERT INTO users (id, email, type, password, created_on)
-VALUES(3, 'tiago@soraschools.com', 'student', '123456', NOW());
+INSERT INTO users (email, first_name, last_name, role, password, created_on)
+VALUES('tiago@soraschools.com', 'Tiago', 'Peixoto', 'student', '$2b$10$iuzlSmlzwsl7XLI5PCUMdeRAL3k0UJYVVJHoowvyqQgOZyCMQorPi', NOW());
 
-INSERT INTO users (id, email, type, password, created_on)
-VALUES(4, 'garret_faculty@soraschools.com', 'faculty_member', '123456', NOW());
+INSERT INTO users (email, first_name, last_name, role, password, created_on)
+VALUES('garret_faculty@soraschools.com', 'Garret', 'Smiley', 'faculty_member', '$2b$10$iuzlSmlzwsl7XLI5PCUMdeRAL3k0UJYVVJHoowvyqQgOZyCMQorPi', NOW());
 
 
 -- skills
-INSERT INTO skills (id, name, description)
-VALUES(1, 'Software Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+INSERT INTO skills (name, description)
+VALUES('Software Engineering', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 
-INSERT INTO skills (id, name, description)
-VALUES(2, 'Product Management', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem');
+INSERT INTO skills (name, description)
+VALUES('Product Management', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem');
 
-INSERT INTO skills (id, name, description)
-VALUES(3, 'UX Design', 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam');
+INSERT INTO skills (name, description)
+VALUES('UX Design', 'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam');
 
 
 -- skill level
@@ -49,11 +49,11 @@ VALUES(4, 3);
 
 
 -- houses
-INSERT INTO houses (id, name)
-VALUES(1, 'Engineering Crew');
+INSERT INTO houses (name)
+VALUES('Engineering Crew');
 
-INSERT INTO houses (id, name)
-VALUES(2, 'Product Crew');
+INSERT INTO houses (name)
+VALUES('Product Crew');
 
 
 -- students in houses

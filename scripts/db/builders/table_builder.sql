@@ -12,8 +12,9 @@ CREATE TABLE IF NOT EXISTS users (
     id serial PRIMARY KEY,
     email VARCHAR ( 255 ) UNIQUE NOT NULL,
     password VARCHAR ( 100 ) NOT NULL,
-    type user_roles NOT NULL,
-    name VARCHAR ( 150 ),
+    role user_roles NOT NULL,
+    first_name VARCHAR ( 100 ),
+    last_name VARCHAR ( 100 ),
     created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP 
 );
