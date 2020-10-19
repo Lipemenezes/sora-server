@@ -34,6 +34,7 @@ module.exports = {
         if (result.error) return res.status(400).send({ error: result.error });
 
         const token = jwtHandler.generateToken(result.id);
+
         return res.status(201).send({ token });
     },
 
