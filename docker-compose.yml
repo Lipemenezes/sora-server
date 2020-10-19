@@ -6,13 +6,6 @@ services:
     command: tail -f /dev/null #npm run dev
     restart: always
     environment:
-      - PGHOST=postgres
-      - SECRET=XF2PCH9-TMPM4NM-7VM2ASK
-      - PGUSER=postgres
-      - PGPASSWORD=Postgres2019!
-      - PGDATABASE=sora
-      - PGPORT=5432
-      - SERVER_PORT=8000
       - NODE_PATH=/home/ahgora/Desktop/sora/be/node_modules:/home/ahgora/Desktop/sora/be/
     build:
       context: /home/ahgora/Desktop/sora/be/

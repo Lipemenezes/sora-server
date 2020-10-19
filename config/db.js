@@ -15,7 +15,7 @@ if (process.env.PGSSL) {
 const pool = new Pool(connectionData);
 
 pool.on('connect', () => {
-    console.log(`Connected to db ${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`);
+    console.info(`Connected to db ${process.env.PGHOST}:${process.env.PGPORT}/${process.env.PGDATABASE}`);
 });
 
 module.exports = {

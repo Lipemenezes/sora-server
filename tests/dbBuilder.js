@@ -144,21 +144,21 @@ const populate = async () => await db.execute(populateOperation, []);
 module.exports = {
     fromScratch: async () => {
         try {
-            await createDb();
+            await create();
         } catch (e) {
-
+            console.info(e.message);
         }
 
         try {
             await rebuild();
         } catch (e) {
-
+            console.info(e.message);
         }
 
         try {
             await populate();
         } catch (e) {
-
+            console.info(e.message);
         }
 
         return;

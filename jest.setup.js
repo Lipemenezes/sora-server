@@ -1,5 +1,7 @@
 'use strict';
 
+const env = require('./config/env');
+
 module.exports = (() => {
-    process.env.PGDATABASE = 'sora_test';
+    env();
 })();
