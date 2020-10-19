@@ -9,7 +9,7 @@ const authMiddleware = require('./app/middlewares/auth');
 
 const userController = require('./app/controllers/user');
 
-require('dotenv-safe').config();
+require('./config/env')();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
