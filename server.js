@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+app.post('/register', userController.create);
+
+app.post('/login', userController.login);
+
 app.get('/status', authMiddleware, (req, res, next) => {
     res.json({ timestamp: new Date() });
 });
