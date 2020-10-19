@@ -3,7 +3,7 @@ version: '3'
 services:
   sora:
     container_name: sora
-    command: npm run dev
+    command: tail -f /dev/null #npm run dev
     restart: always
     environment:
       - PGHOST=postgres
