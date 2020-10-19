@@ -1,32 +1,9 @@
 'use strict';
 
-const express = require('express');
-const app = express();
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const app = require('./config/express')();
 
-const authMiddleware = require('./app/middlewares/auth');
-
-const userController = require('./app/controllers/user');
-
-require('./config/env')();
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser());
-
-app.post('/register', userController.create);
-
-app.post('/login', userController.login);
-
-app.get('/status', authMiddleware, (req, res, next) => {
-    res.json({ timestamp: new Date() });
-});
-
-const SERVER_PORT = process.env.SERVER_PORT;
-
-app.listen(SERVER_PORT, () =>
-    console.info(`Sora server listening on port ${SERVER_PORT}`),
+app.listen(process.env.SERVER_PORT, () =>
+    console.info(`Sora server listening on port ${process.env.SERVER_PORT}`),
 );
 
 module.exports = app;
