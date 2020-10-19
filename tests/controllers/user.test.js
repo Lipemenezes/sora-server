@@ -27,7 +27,7 @@ describe('user', () => {
             const res = await request(server)
                 .post('/login')
                 .send({
-                    email: 'garret@hireMe.com'
+                    email: 'garret@hireMe.com',
                 });
             expect(res.statusCode).toEqual(400);
             expect(res.body.error).toEqual('Invalid payload');
@@ -38,7 +38,7 @@ describe('user', () => {
                 .post('/login')
                 .send({
                     email: 'tiago@hireMe.com',
-                    password: '123456'
+                    password: '123456',
                 });
             expect(res.statusCode).toEqual(400);
             expect(res.body.error).toEqual('Invalid credentials');
@@ -49,7 +49,7 @@ describe('user', () => {
                 .post('/login')
                 .send({
                     email: 'tiago@soraschools.com',
-                    password: '123456'
+                    password: '123456',
                 });
             expect(res.statusCode).toEqual(200);
             expect(res.body.token).toBeTruthy();

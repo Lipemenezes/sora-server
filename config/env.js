@@ -12,6 +12,6 @@ const getEnvPath = () => {
 module.exports = () => {
     require('dotenv-safe').config({
         path: getEnvPath(),
-        allowEmptyValues: true
+        allowEmptyValues: true,
     });
 };
