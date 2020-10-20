@@ -10,6 +10,7 @@ const cors = require('cors');
 const userRoutes = require('../app/routes/users');
 const adminRoutes = require('../app/routes/admin');
 const whoCanHelpRoutes = require('../app/routes/whoCanHelp');
+const skillRoutes = require('../app/routes/skills');
 
 module.exports = () => {
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +22,7 @@ module.exports = () => {
     app.use(userRoutes);
     app.use(adminRoutes);
     app.use(whoCanHelpRoutes);
+    app.use(skillRoutes);
 
     return app;
 };
