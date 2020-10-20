@@ -13,11 +13,13 @@ module.exports = {
 
         const dbOperation = `
             SELECT
-                ssl.user_id
+                sh.user_id, u.first_name, u.last_name, u.role
             FROM
                 student_skill_level ssl
             LEFT JOIN
                 student_house sh on ssl.user_id = sh.user_id
+            JOIN
+                users u on u.id = ssl.user_id
             WHERE
                 ssl.skill_id = $1
                 AND ssl.skill_level >= $2
@@ -47,9 +49,11 @@ module.exports = {
     async getFacultyMembers(skillId) {
         const dbOperation = `
             SELECT
-                fms.user_id
+                fms.user_id, u.first_name, u.last_name, u.role
             FROM
                 faculty_member_skills fms
+            JOIN
+                users u on fms.user_id = u.id
             WHERE
                 fms.skill_id = $1
         `;

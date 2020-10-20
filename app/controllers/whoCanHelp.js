@@ -15,13 +15,15 @@ module.exports = {
 
         const userId = req.user.userId;
 
-        const skillsData = await studentModel.getSkillData(userId, skillId);
-        if (skillsData.error) return error(res, skillsData.error);
+        const skillResult = await studentModel.getSkillData(userId, skillId);
+        if (skillResult.error) return error(res, skillResult.error);
+        if (skillResult.skillData.skill_level === undefined) return error(res, 'Not allowed');
 
-        const studentInfo = await studentModel.getGeneralInfo(userId);
-        if (studentInfo.error) return error(res, studentInfo.error);
+        const studentResult = await studentModel.getGeneralInfo(userId);
+        if (studentResult.error) return error(res, studentResult.error);
 
-        let result = await whoCanHelpModel.getStudents(skillId, skillsData.skill_level, studentInfo.house_id);
+
+        let result = await whoCanHelpModel.getStudents(skillId, skillResult.skillData.skill_level, studentResult.student.house_id);
         if (result.error) return error(res, result.error);
 
         if (result.students.length > 0) return res.status(200).json({ data: result.students });

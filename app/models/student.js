@@ -4,6 +4,7 @@ const db = require('../../config/db');
 
 const ERRORS = {
     NOT_EXISTING_USER: 'User does not exist',
+    STUDENT_SKILL_MATCH_NOT_FOUND: 'Could not find the match for student and skill',
 };
 
 module.exports = {
@@ -52,7 +53,7 @@ module.exports = {
         try {
             const { rows } = await db.execute(dbOperation, values);
 
-            if (rows.length === 0) throw new Error(ERRORS.NOT_EXISTING_USER);
+            if (rows.length === 0) throw new Error(ERRORS.STUDENT_SKILL_MATCH_NOT_FOUND);
 
             return { skillData: rows[0] };
         } catch (error) {
