@@ -1,8 +1,5 @@
 'use strict';
 
-const dbBuilder = require('../dbBuilder');
-
-const request = require('supertest');
 const server = require('../../server');
 
 describe('user', () => {
