@@ -47,6 +47,9 @@ VALUES(3, 2, 3);
 INSERT INTO faculty_member_skills (user_id, skill_id)
 VALUES(4, 3);
 
+INSERT INTO faculty_member_skills (user_id, skill_id)
+VALUES(4, 1);
+
 
 -- houses
 INSERT INTO houses (name)
@@ -62,3 +65,6 @@ VALUES(1, 1);
 
 INSERT INTO student_house (user_id, house_id)
 VALUES(2, 1);
+
+INSERT INTO student_house (user_id, house_id)
+VALUES(3, 2);
