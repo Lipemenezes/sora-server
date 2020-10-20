@@ -13,9 +13,11 @@ describe('user', () => {
 
     describe('login', () => {
 
+        const LOGIN_ROUTE = '/login';
+
         test('email is missing from body - should return status 400', async () => {
             const res = await request(server)
-                .post('/login')
+                .post(LOGIN_ROUTE)
                 .send({
                     password: '123456',
                 });
@@ -25,7 +27,7 @@ describe('user', () => {
 
         test('password is missing from body - should return status 400', async () => {
             const res = await request(server)
-                .post('/login')
+                .post(LOGIN_ROUTE)
                 .send({
                     email: 'garret@hireMe.com',
                 });
@@ -35,7 +37,7 @@ describe('user', () => {
 
         test('invalid credentials, should return status 400', async () => {
             const res = await request(server)
-                .post('/login')
+                .post(LOGIN_ROUTE)
                 .send({
                     email: 'tiago@hireMe.com',
                     password: '123456',
@@ -46,7 +48,7 @@ describe('user', () => {
 
         test('valid credentials and payload, should return status 200 and token in body', async () => {
             const res = await request(server)
-                .post('/login')
+                .post(LOGIN_ROUTE)
                 .send({
                     email: 'tiago@soraschools.com',
                     password: '123456',
@@ -59,9 +61,11 @@ describe('user', () => {
 
     describe('register', () => {
 
+        const REGISTER_ROUTE = '/register';
+
         test('email is missing from body - should return status 400', async () => {
             const res = await request(server)
-                .post('/register')
+                .post(REGISTER_ROUTE)
                 .send({
                     password: 'boss',
                 });
@@ -71,7 +75,7 @@ describe('user', () => {
 
         test('password is missing from body - should return status 400', async () => {
             const res = await request(server)
-                .post('/register')
+                .post(REGISTER_ROUTE)
                 .send({
                     email: 'boss@bla.com',
                 });
@@ -81,7 +85,7 @@ describe('user', () => {
 
         test('valid payload, should create', async () => {
             const res = await request(server)
-                .post('/register')
+                .post(REGISTER_ROUTE)
                 .send({
                     email: 'tiago@hireMe.com',
                     password: '123456',
