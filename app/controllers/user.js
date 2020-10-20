@@ -43,7 +43,6 @@ module.exports = {
         const validation = validatePayload(req.body);
         if (!validation.isValid) return res.status(400).json({ error: validation.error });
 
-
         const result = await userModel.getByEmail(req.body.email);
 
         if (!result.user || !passwordHandler.comparePassword(result.user.password, req.body.password)) {
