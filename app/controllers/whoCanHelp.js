@@ -17,7 +17,6 @@ module.exports = {
 
         const skillResult = await studentModel.getSkillData(userId, skillId);
         if (skillResult.error) return error(res, skillResult.error);
-        if (skillResult.skillData.skill_level === undefined) return error(res, 'Not allowed');
 
         const studentResult = await studentModel.getGeneralInfo(userId);
         if (studentResult.error) return error(res, studentResult.error);
