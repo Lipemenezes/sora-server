@@ -4,8 +4,8 @@ const router = require('express').Router();
 
 const authMiddleware = require('../middlewares/auth');
 
-const whoCanHelpController = require('../controllers/whoCanHelp');
+const questionController = require('../controllers/question');
 
-router.get('/whoCanHelp', authMiddleware, whoCanHelpController.discover);
+router.get('/questions/whoToAsk', authMiddleware, questionController.whoToAsk);
 
 module.exports = router;

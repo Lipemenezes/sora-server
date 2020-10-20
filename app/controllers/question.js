@@ -1,13 +1,13 @@
 'use strict';
 
-const whoCanHelpModel = require('../models/whoCanHelp');
+const questionModel = require('../models/question');
 const studentModel = require('../models/student');
 
 const error = (res, err) => res.status(400).json({ error: err });
 
 module.exports = {
 
-    async discover(req, res) {
+    async whoToAsk(req, res) {
 
         const { skillId } = req.query;
 
@@ -22,12 +22,12 @@ module.exports = {
         if (studentResult.error) return error(res, studentResult.error);
 
 
-        let result = await whoCanHelpModel.getStudents(skillId, skillResult.skillData.skill_level, studentResult.student.house_id);
+        let result = await questionModel.getStudents(skillId, skillResult.skillData.skill_level, studentResult.student.house_id);
         if (result.error) return error(res, result.error);
 
         if (result.students.length > 0) return res.status(200).json({ data: result.students });
 
-        result = await whoCanHelpModel.getFacultyMembers(skillId);
+        result = await questionModel.getFacultyMembers(skillId);
         if (result.error) return error(res, result.error);
 
         return res.status(200).json({ data: result.facultyMembers });

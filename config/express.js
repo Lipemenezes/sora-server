@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const userRoutes = require('../app/routes/users');
 const adminRoutes = require('../app/routes/admin');
-const whoCanHelpRoutes = require('../app/routes/whoCanHelp');
+const questionRoutes = require('../app/routes/questions');
 const skillRoutes = require('../app/routes/skills');
 
 module.exports = () => {
@@ -21,7 +21,7 @@ module.exports = () => {
 
     app.use(userRoutes);
     app.use(adminRoutes);
-    app.use(whoCanHelpRoutes);
+    app.use(questionRoutes);
     app.use(skillRoutes);
 
     return app;
