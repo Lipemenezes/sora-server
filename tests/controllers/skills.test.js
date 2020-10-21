@@ -1,6 +1,6 @@
 'use strict';
 
-const server = require('../../server');
+const server = require('server');
 
 describe('skills', () => {
 

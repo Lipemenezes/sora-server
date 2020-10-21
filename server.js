@@ -1,9 +1,9 @@
 'use strict';
 
-require('./config/env')();
-require('./config/db');
+require('config/env')();
+require('config/db');
 
-const app = require('./config/express')();
+const app = require('config/express')();
 
 
 app.listen(process.env.SERVER_PORT, () =>

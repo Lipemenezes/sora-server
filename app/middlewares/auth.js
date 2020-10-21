@@ -1,6 +1,6 @@
 'use strict';
 
-const jwtHandler = require('../security/jwt');
+const jwtHandler = require('app/security/jwt');
 const parseBearerToken = require('parse-bearer-token').default;
 
 module.exports = async (req, res, next) => {

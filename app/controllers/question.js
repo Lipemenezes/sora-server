@@ -1,7 +1,7 @@
 'use strict';
 
-const questionModel = require('../models/question');
-const studentModel = require('../models/student');
+const questionModel = require('app/models/question');
+const studentModel = require('app/models/student');
 
 const error = (res, err) => res.status(400).json({ error: err });
 

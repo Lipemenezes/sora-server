@@ -1,6 +1,6 @@
 'use strict';
 
-const skillModel = require('../models/skill');
+const skillModel = require('app/models/skill');
 
 module.exports = {
 

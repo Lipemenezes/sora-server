@@ -2,9 +2,9 @@
 
 const router = require('express').Router();
 
-const authMiddleware = require('../middlewares/auth');
+const authMiddleware = require('app/middlewares/auth');
 
-const questionController = require('../controllers/question');
+const questionController = require('app/controllers/question');
 
 router.get('/questions/whoToAsk', authMiddleware, questionController.whoToAsk);
 

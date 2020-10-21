@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 
-const userRoutes = require('../app/routes/users');
-const adminRoutes = require('../app/routes/admin');
-const questionRoutes = require('../app/routes/questions');
-const skillRoutes = require('../app/routes/skills');
+const userRoutes = require('app/routes/users');
+const adminRoutes = require('app/routes/admin');
+const questionRoutes = require('app/routes/questions');
+const skillRoutes = require('app/routes/skills');
 
 module.exports = () => {
     app.use(bodyParser.urlencoded({ extended: true }));

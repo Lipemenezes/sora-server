@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('../../config/db');
+const db = require('config/db');
 
 const ERRORS = {
     DUPLICATED_EMAIL: 'User with that EMAIL already exists',

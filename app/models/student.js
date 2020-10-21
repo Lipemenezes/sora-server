@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('../../config/db');
+const db = require('config/db');
 
 const ERRORS = {
     NOT_EXISTING_USER: 'User does not exist',

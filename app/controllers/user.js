@@ -1,11 +1,11 @@
 'use strict';
 
-const passwordHandler = require('../security/password');
-const jwtHandler = require('../security/jwt');
+const passwordHandler = require('app/security/password');
+const jwtHandler = require('app/security/jwt');
 
-const userModel = require('../models/user');
+const userModel = require('app/models/user');
 
-const validator = require('../utils/validations');
+const validator = require('app/utils/validations');
 
 const validatePayload = payload => {
     if (!payload.email || !payload.password) return { isValid: false, error: 'Invalid payload' };

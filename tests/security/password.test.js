@@ -1,6 +1,6 @@
 'use strict';
 
-const passwordHandler = require('../../app/security/password');
+const passwordHandler = require('app/security/password');
 
 describe('security -', () => {
 

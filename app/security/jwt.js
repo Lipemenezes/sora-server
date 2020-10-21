@@ -1,7 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/user');
+const userModel = require('app/models/user');
 
 const JWT_EXPIRATION = '7d';
 
