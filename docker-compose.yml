@@ -6,15 +6,15 @@ services:
     command: tail -f /dev/null #npm run dev
     restart: always
     environment:
-      - NODE_PATH=<path_to_project_directory>/node_modules:<path_to_project_directory>/
+      - PORT=8000
     build:
-      context: <path_to_project_directory>/
+      context: .
       args:
-        project_home: <path_to_project_directory>/
+        project_home: /install
         production_flag:
     volumes:
-      - <path_to_project_directory>/:<path_to_project_directory>/:rw
-      - <path_to_project_directory>/node_modules # hack to exclude node_modules from mapping
+      - .:/install/:rw
+      - ./node_modules # hack to exclude node_modules from mapping
     depends_on:
       - postgres
     ports:
