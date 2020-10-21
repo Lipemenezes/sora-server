@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('config/db');
+const db = require('config/db/db');
 
 const rebuildTablesOperation = `
     DROP SCHEMA public CASCADE;

@@ -84,7 +84,7 @@ describe('user', () => {
             const res = await request(server)
                 .post(REGISTER_ROUTE)
                 .send({
-                    email: 'tiago@hireMe.com',
+                    email: 'tiago@hireMe2.com',
                     password: '123456',
                 });
             expect(res.statusCode).toEqual(201);
