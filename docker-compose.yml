@@ -3,7 +3,7 @@ version: '3'
 services:
   sora:
     container_name: sora
-    command: tail -f /dev/null #npm run dev
+    command: npm start
     restart: always
     environment:
       - PORT=8000
@@ -12,9 +12,6 @@ services:
       args:
         project_home: /install
         production_flag:
-    volumes:
-      - .:/install/:rw
-      - ./node_modules # hack to exclude node_modules from mapping
     depends_on:
       - postgres
     ports:
