@@ -6,6 +6,7 @@ const getEnvPath = () => {
         'dev': '.env.dev',
     };
 
+    console.info(`Using env - ${process.env.NODE_ENV}`);
     return envs[process.env.NODE_ENV] || '.env';
 };
 
