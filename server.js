@@ -5,7 +5,9 @@ const migration = require('config/db/migration');
 
 env();
 
-migration();
+if (process.env.NODE_ENV !== 'test') {
+    migration();
+}
 
 require('config/db/db');
 

@@ -5,7 +5,7 @@ const migrations = require('postgres-migrations');
 const pg = require('pg');
 
 const ensureDb = async () => {
-    if (process.env.NODE_ENV === 'test') return;
+
     const dbConfig = {
         user: process.env.PGUSER,
         password: process.env.PGPASSWORD,
