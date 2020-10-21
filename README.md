@@ -26,3 +26,37 @@ other NODE_ENV variations uses **.env** (`npm start`)
 **Important 2:**
 - Before running tests, you need to execute at least once:`npm run create-test-db`
 - After that you can just run `npm test` in your container
+
+
+### Public routes
+
+```
+GET /status
+```
+
+```
+POST `/login`
+
+body:
+{
+    "email": "your@mail.com",
+    "password": "123",
+}
+
+returns jwt token
+```
+
+### Private routes
+Using header `Authorization: Bearer <token>`
+
+```
+GET `/skills/GetByStudent`
+
+returns student skill data (skill id, skill level, skill name)
+```
+
+```
+GET `/questions/whoToAsk?skillId=`
+
+returns list of students of faculty members who can help you with questions
+```
