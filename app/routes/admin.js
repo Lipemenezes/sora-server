@@ -4,7 +4,7 @@ const authMiddleware = require('app/middlewares/auth');
 
 const router = require('express').Router();
 
-router.get('/status', authMiddleware, (req, res, next) => {
+router.get('/status', (req, res, next) => {
     res.json({ timestamp: new Date() });
 });
 
