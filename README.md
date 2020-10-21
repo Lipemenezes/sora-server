@@ -10,19 +10,18 @@ API to serve information for students.
 
 2 - Go to the desired .env file on the project root and configure the env vars
 
+3 - Run `docker-compose up --build -d sora` in the project root
+
+4 - Run `docker-compose exec sora sh` and after that the script you want inside the container (e.g `npm start`)
+
 **Important:**
-Application will look for .env file based on NODE_ENV
+Application will look for a .env file based on NODE_ENV
 
 NODE_ENV=test uses **.env.test** (`npm run test`)
 
 NODE_ENV=dev uses **.env.dev** (`npm run dev`)
 
 other NODE_ENV variations uses **.env** (`npm start`)
-
-
-3 - Run `docker-compose up --build -d sora` in the project root
-
-4 - Run `docker-compose exec sora sh` and after that the script you want inside the container (e.g `npm start`)
 
 **Important 2:**
 - Before running tests, you need to execute at least once:`npm run create-test-db`
