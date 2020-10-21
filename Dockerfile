@@ -4,7 +4,7 @@ RUN apk add --no-cache make gcc g++ python git
 
 ARG project_home=/install
 # ARG production_flag=--production
-ENV NODE_PATH=$project_home/node_modules:$project_home/app
+ENV NODE_PATH=$project_home/node_modules:$project_home/
 
 RUN mkdir -p $project_home &&\
     adduser -u 1000 -g 1000 user -D
