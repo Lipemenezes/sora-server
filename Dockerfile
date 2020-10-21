@@ -1,6 +1,5 @@
 FROM mhart/alpine-node:14
 
-# passo demorado, necessário para dependencias nativas gyp
 RUN apk add --no-cache make gcc g++ python git
 
 ARG project_home=/install

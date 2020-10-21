@@ -1,0 +1,13 @@
+services:
+    sora:
+      command: npm start
+      environment:
+        - NODE_PATH=<path_to_the_project_root>/node_modules:<path_to_the_project_root>/
+      build:
+        context: <path_to_the_project_root>/
+        args:
+          project_home: <path_to_the_project_root>/
+          production_flag:
+      volumes:
+        - <path_to_the_project_root>/:<path_to_the_project_root>/:rw
+        - <path_to_the_project_root>/node_modules # hack to exclude node_modules from mapping

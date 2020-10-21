@@ -3,7 +3,7 @@ version: '3'
 services:
   sora:
     container_name: sora
-    command: tail -f /dev/null #npm run dev
+    command: tail -f /dev/null
     restart: always
     environment:
       - NODE_PATH=/home/ahgora/Desktop/sora/be/node_modules:/home/ahgora/Desktop/sora/be/
