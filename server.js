@@ -13,8 +13,8 @@ require('config/db/db');
 
 const app = require('config/express')();
 
-app.listen(process.env.SERVER_PORT, () =>
-    console.info(`Sora server listening on port ${process.env.SERVER_PORT}`),
+app.listen(process.env.PORT, () =>
+    console.info(`Sora server listening on port ${process.env.PORT}`),
 );
 
 module.exports = app;
