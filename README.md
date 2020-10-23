@@ -8,11 +8,9 @@ API to serve information for students.
 
 1 - First you'll have to clone the repo and make sure docker-compose is installed and then go to the project directory
 
-2 - Go to the desired .env file on the project root and configure the env vars
+2 - Create a .env file on the project root and configure the env vars
 
 3 - Run `docker-compose up --build -d sora` in the project root
-
-4 - Run `docker-compose exec sora sh` and after that the script you want inside the container (e.g `npm start`)
 
 **Important:**
 Application will look for a .env file based on NODE_ENV
